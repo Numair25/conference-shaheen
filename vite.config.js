@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
+  base: process.env.BASE_PATH || (process.env.GITHUB_ACTIONS ? '/conference-shaheen/' : '/'),
   appType: 'mpa',
   root: 'src',
   publicDir: '../public',
