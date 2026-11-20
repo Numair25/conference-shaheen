@@ -72,6 +72,8 @@ html {
   scroll-padding-top: calc(var(--header-height) + var(--subnav-height) + 16px);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -79,7 +81,8 @@ body {
   background-color: var(--color-bg-page);
   color: var(--color-text-body);
   line-height: 1.65;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 img, svg {
@@ -213,6 +216,9 @@ button, input, select, textarea {
 }
 
 .btn-header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--color-primary);
   color: var(--color-text-light);
   font-size: 0.875rem;
@@ -220,8 +226,14 @@ button, input, select, textarea {
   padding: 9px 20px;
   border-radius: var(--radius-sm);
   letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all var(--transition-fast);
   box-shadow: 0 2px 8px rgba(10, 54, 34, 0.15);
+}
+
+.header-cta-short {
+  display: none;
 }
 
 .btn-header-cta:hover {
@@ -784,12 +796,18 @@ button, input, select, textarea {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   z-index: 800;
   transition: top var(--transition-fast);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .subnav-container {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 24px;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .subnav-list {
@@ -2466,5 +2484,112 @@ button, input, select, textarea {
   .btn-delegations-agenda {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Header Mobile Optimization */
+  .header-inner {
+    padding: 0 16px;
+  }
+
+  .header-logo {
+    height: 38px;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+
+  .btn-header-cta {
+    padding: 7px 14px;
+    font-size: 0.8125rem;
+  }
+
+  /* Subnav Mobile */
+  .subnav-container {
+    padding: 0 12px;
+  }
+
+  .subnav-link {
+    padding: 13px 10px;
+    font-size: 0.8125rem;
+  }
+
+  /* Briefing Card Mobile */
+  .event-briefing-card {
+    padding: 22px 18px;
+  }
+
+  .briefing-actions {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .btn-briefing-primary,
+  .btn-briefing-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Patrons Footer CTA Mobile */
+  .patrons-footer-cta {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 22px 18px;
+    gap: 16px;
+  }
+
+  .btn-view-all-speakers {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 540px) {
+  .header-inner {
+    padding: 0 12px;
+  }
+
+  .header-logo {
+    height: 34px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .btn-header-cta {
+    padding: 6px 11px;
+    font-size: 0.775rem;
+  }
+
+  .header-cta-long {
+    display: none;
+  }
+
+  .header-cta-short {
+    display: inline;
+  }
+
+  .hero-event-title {
+    font-size: 1.6rem;
+  }
+
+  .speakers-page-title {
+    font-size: 1.6rem;
+  }
+
+  .patrons-cta-title {
+    font-size: 1.15rem;
+  }
+
+  .btn-view-all-speakers {
+    font-size: 0.85rem;
+    padding: 11px 16px;
+    white-space: normal;
+  }
+
+  .patrons-footer-cta {
+    padding: 18px 14px;
   }
 }
