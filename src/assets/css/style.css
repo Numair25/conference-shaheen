@@ -242,6 +242,35 @@ button, input, select, textarea {
   transform: translateY(-1px);
 }
 
+.btn-header-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-header-secondary:hover {
+  background-color: var(--color-primary-subtle);
+  border-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-prev-short {
+  display: none;
+}
+
 /* --------------------------------------------------------------------------
    4. Event Hero Section (2-Column Banner Architecture)
    -------------------------------------------------------------------------- */
@@ -605,8 +634,8 @@ button, input, select, textarea {
 }
 
 .briefing-actions {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
   margin-top: 4px;
@@ -2555,12 +2584,17 @@ button, input, select, textarea {
   }
 
   .header-actions {
-    gap: 8px;
+    gap: 6px;
   }
 
   .btn-header-cta {
-    padding: 6px 11px;
-    font-size: 0.775rem;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .btn-header-secondary {
+    padding: 6px 8px;
+    font-size: 0.75rem;
   }
 
   .header-cta-long {
@@ -2568,6 +2602,14 @@ button, input, select, textarea {
   }
 
   .header-cta-short {
+    display: inline;
+  }
+
+  .btn-prev-long {
+    display: none;
+  }
+
+  .btn-prev-short {
     display: inline;
   }
 
