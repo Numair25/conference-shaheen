@@ -152,10 +152,11 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
 }
 
 .header-logo {
-  height: 46px;
+  height: 44px;
   width: auto;
   object-fit: contain;
   filter: brightness(0) saturate(100%) invert(16%) sepia(35%) saturate(1637%) hue-rotate(104deg) brightness(94%) contrast(96%);
@@ -164,6 +165,33 @@ button, input, select, textarea {
 
 .header-logo:hover {
   transform: scale(1.02);
+}
+
+.header-brand-divider {
+  width: 1px;
+  height: 26px;
+  background-color: var(--color-border-dark);
+  opacity: 0.45;
+  margin: 0 2px;
+}
+
+.header-conclave-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.header-conclave-logo:hover {
+  transform: scale(1.02);
+}
+
+.header-conclave-desktop {
+  display: block;
+}
+
+.header-conclave-mobile {
+  display: none;
 }
 
 .header-actions {
@@ -317,6 +345,20 @@ button, input, select, textarea {
 /* Main Event Title Block */
 .hero-header-block {
   margin-bottom: 28px;
+}
+
+.hero-brand-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.hero-conclave-logo-img {
+  height: 68px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(10, 54, 34, 0.08));
 }
 
 .host-badge {
@@ -1883,11 +1925,31 @@ button, input, select, textarea {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.footer-brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
 .footer-logo {
   height: 48px;
   width: auto;
-  margin-bottom: 16px;
   filter: brightness(0) invert(1);
+}
+
+.footer-logo-divider {
+  width: 1px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.footer-conclave-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
 }
 
 .footer-tagline {
@@ -1973,6 +2035,20 @@ button, input, select, textarea {
 .speakers-header-block {
   display: flex;
   flex-direction: column;
+}
+
+.speakers-brand-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.speakers-conclave-logo-img {
+  height: 62px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(10, 54, 34, 0.08));
 }
 
 .speakers-header-block .hero-breadcrumb {
@@ -2579,8 +2655,34 @@ button, input, select, textarea {
     padding: 0 12px;
   }
 
+  .header-brand {
+    gap: 8px;
+  }
+
   .header-logo {
-    height: 34px;
+    height: 32px;
+  }
+
+  .header-brand-divider {
+    height: 20px;
+    margin: 0 1px;
+  }
+
+  .header-conclave-desktop {
+    display: none;
+  }
+
+  .header-conclave-mobile {
+    display: block;
+    height: 30px;
+  }
+
+  .hero-conclave-logo-img {
+    height: 52px;
+  }
+
+  .speakers-conclave-logo-img {
+    height: 48px;
   }
 
   .header-actions {
