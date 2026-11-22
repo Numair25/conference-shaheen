@@ -3,10 +3,13 @@
  * Academic Event Portal Scripts
  */
 
+import '../css/agenda-sticky.css';
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollProgress();
   initHeaderScroll();
   initSubnavScrollspy();
+  initDayGroups();
   initAgendaTabs();
   initFormHandler();
   initVenueGallery();
@@ -120,10 +123,41 @@ function initSubnavScrollspy() {
 }
 
 /**
- * 4. Programme Agenda Day Filter Tabs
+ * 4a. Group each day's header + sessions into a .day-group wrapper so the
+ *     day header can stick only while its own schedule is in view
+ *     (Day 1 sticky -> its sessions -> then Day 2 sticky -> its sessions).
+ */
+function initDayGroups() {
+  const container = document.querySelector('.schedule-container');
+  if (!container || container.querySelector('.day-group')) return;
+
+  const headers = container.querySelectorAll(':scope > .day-group-header');
+  headers.forEach(header => {
+    const day = header.getAttribute('data-day');
+
+    const group = document.createElement('div');
+    group.className = 'day-group';
+    group.setAttribute('data-day', day);
+
+    container.insertBefore(group, header);
+    group.appendChild(header);
+
+    // Move this day's session cards into the group (stop at the next day header)
+    let next = group.nextElementSibling;
+    while (next && next.classList.contains('session-card') && next.getAttribute('data-day') === day) {
+      const current = next;
+      next = next.nextElementSibling;
+      group.appendChild(current);
+    }
+  });
+}
+
+/**
+ * 4b. Programme Agenda Day Filter Tabs
  */
 function initAgendaTabs() {
   const tabs = document.querySelectorAll('.agenda-tab');
+  const dayGroups = document.querySelectorAll('.day-group');
   const dayHeaders = document.querySelectorAll('.day-group-header');
   const sessionCards = document.querySelectorAll('.session-card');
 
@@ -140,6 +174,12 @@ function initAgendaTabs() {
       });
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
+
+      // Show/hide whole day groups
+      dayGroups.forEach(group => {
+        const day = group.getAttribute('data-day');
+        group.style.display = (targetFilter === 'all' || targetFilter === day) ? 'flex' : 'none';
+      });
 
       // Filter day group headers
       dayHeaders.forEach(header => {

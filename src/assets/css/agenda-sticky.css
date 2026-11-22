@@ -1,0 +1,45 @@
+/* ==========================================================================
+   Programme Agenda: sticky Day 1 / Day 2 headers
+   Each day (header + its sessions) lives in a .day-group wrapper. The header
+   sticks under the fixed site header + subnav only while its own group is on
+   screen, so Day 1 stays pinned through its schedule and Day 2 takes over
+   once Day 1 ends.
+   ========================================================================== */
+
+.schedule-container .day-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.schedule-container .day-group + .day-group {
+  margin-top: 24px;
+}
+
+.schedule-container .day-group-header {
+  position: sticky;
+  top: calc(var(--header-height) + var(--subnav-height) - 1px);
+  z-index: 700; /* below subnav (800) and site header (900) */
+  margin-top: 0;
+  margin-bottom: 0;
+  background: var(--color-primary-subtle);
+  box-shadow: 0 6px 14px rgba(10, 54, 34, 0.1);
+}
+
+@media (max-width: 768px) {
+  .schedule-container .day-group-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 10px 14px;
+  }
+
+  .schedule-container .day-date-badge {
+    font-size: 0.72rem;
+  }
+
+  .schedule-container .day-theme-title {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+}
