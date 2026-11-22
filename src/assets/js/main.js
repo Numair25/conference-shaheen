@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initSubnavScrollspy();
   initDayGroups();
+  initCompactTabs();
   initAgendaTabs();
   initFormHandler();
   initVenueGallery();
@@ -153,13 +154,48 @@ function initDayGroups() {
 }
 
 /**
- * 4b. Programme Agenda Day Filter Tabs
+ * 4b. Split tab labels into a short part (always shown) and a long part
+ *     (hidden on very narrow screens) so the three tabs fit side by side
+ *     in the sticky bar.
+ */
+function initCompactTabs() {
+  const labels = {
+    all: ['All', ' Sessions'],
+    day1: ['Day 1', ' \u2022 1st Dec 2026'],
+    day2: ['Day 2', ' \u2022 2nd Dec 2026']
+  };
+
+  document.querySelectorAll('.agenda-tab').forEach(tab => {
+    const parts = labels[tab.getAttribute('data-target')];
+    if (!parts) return;
+
+    const textNode = Array.from(tab.childNodes).find(
+      n => n.nodeType === Node.TEXT_NODE && n.textContent.trim()
+    );
+    if (!textNode) return;
+
+    const shortLabel = document.createElement('span');
+    shortLabel.className = 'tab-label';
+    shortLabel.textContent = parts[0];
+
+    const longLabel = document.createElement('span');
+    longLabel.className = 'tab-label-long';
+    longLabel.textContent = parts[1];
+
+    tab.replaceChild(shortLabel, textNode);
+    tab.insertBefore(longLabel, shortLabel.nextSibling);
+  });
+}
+
+/**
+ * 4c. Programme Agenda Day Filter Tabs
  */
 function initAgendaTabs() {
   const tabs = document.querySelectorAll('.agenda-tab');
   const dayGroups = document.querySelectorAll('.day-group');
   const dayHeaders = document.querySelectorAll('.day-group-header');
   const sessionCards = document.querySelectorAll('.session-card');
+  const scheduleContainer = document.querySelector('.schedule-container');
 
   if (!tabs.length) return;
 
@@ -200,6 +236,11 @@ function initAgendaTabs() {
           card.style.display = 'none';
         }
       });
+
+      // If the user was scrolled down the schedule, jump back to its start
+      if (scheduleContainer && scheduleContainer.getBoundingClientRect().top < 0) {
+        scheduleContainer.scrollIntoView({ block: 'start' });
+      }
     });
   });
 }

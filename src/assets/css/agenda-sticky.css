@@ -1,10 +1,86 @@
 /* ==========================================================================
-   Programme Agenda: sticky Day 1 / Day 2 headers
-   Each day (header + its sessions) lives in a .day-group wrapper. The header
-   sticks under the fixed site header + subnav only while its own group is on
-   screen, so Day 1 stays pinned through its schedule and Day 2 takes over
-   once Day 1 ends.
+   Programme Agenda: sticky compact day tabs + sticky Day 1 / Day 2 headers
+
+   Stack (top to bottom) while scrolling the agenda:
+     site header -> in-page subnav -> day tabs (All / Day 1 / Day 2)
+     -> current day banner (Day 1, then Day 2 takes over) -> sessions
+
+   Each day (header + its sessions) lives in a .day-group wrapper so a day
+   banner only sticks while its own schedule is on screen.
    ========================================================================== */
+
+.section-agenda {
+  --agenda-tabs-height: 52px;
+  --agenda-sticky-top: calc(var(--header-height) + var(--subnav-height) - 1px);
+}
+
+/* ---- Sticky, compact, side-by-side tabs -------------------------------- */
+
+.section-agenda .agenda-tabs-wrapper {
+  position: sticky;
+  top: var(--agenda-sticky-top);
+  z-index: 750; /* above day banner (700), below subnav (800) */
+  box-sizing: border-box;
+  height: var(--agenda-tabs-height);
+  margin: 0 0 12px;
+  padding: 6px 0;
+  background: #fff;
+  border-bottom: 1px solid rgba(10, 54, 34, 0.12);
+}
+
+/* Cover the section gutters so content never peeks out beside the bar */
+.section-agenda .agenda-tabs-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0 -16px;
+  background: #fff;
+  border-bottom: 1px solid rgba(10, 54, 34, 0.12);
+  z-index: -1;
+}
+
+.section-agenda .agenda-tablist {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.section-agenda .agenda-tablist .agenda-tab {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  font-size: 0.9rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Subtitles are repeated in the day banner below, so drop them from tabs */
+.section-agenda .agenda-tablist .agenda-tab .tab-sub {
+  display: none;
+}
+
+.section-agenda .agenda-tablist .agenda-tab .tab-count {
+  flex: 0 0 auto;
+}
+
+/* ---- Sticky day banners (hand off Day 1 -> Day 2) ---------------------- */
+
+.schedule-container {
+  scroll-margin-top: calc(var(--agenda-sticky-top) + var(--agenda-tabs-height) + 8px);
+}
 
 .schedule-container .day-group {
   display: flex;
@@ -18,15 +94,31 @@
 
 .schedule-container .day-group-header {
   position: sticky;
-  top: calc(var(--header-height) + var(--subnav-height) - 1px);
-  z-index: 700; /* below subnav (800) and site header (900) */
+  top: calc(var(--agenda-sticky-top) + var(--agenda-tabs-height));
+  z-index: 700; /* below tabs (750), subnav (800) and site header (900) */
   margin-top: 0;
   margin-bottom: 0;
   background: var(--color-primary-subtle);
   box-shadow: 0 6px 14px rgba(10, 54, 34, 0.1);
 }
 
+/* ---- Mobile ------------------------------------------------------------ */
+
 @media (max-width: 768px) {
+  .section-agenda {
+    --agenda-tabs-height: 46px;
+  }
+
+  .section-agenda .agenda-tablist {
+    gap: 6px;
+  }
+
+  .section-agenda .agenda-tablist .agenda-tab {
+    padding: 0 6px;
+    font-size: 0.8rem;
+    gap: 4px;
+  }
+
   .schedule-container .day-group-header {
     flex-direction: column;
     align-items: flex-start;
@@ -41,5 +133,12 @@
   .schedule-container .day-theme-title {
     font-size: 1rem;
     line-height: 1.3;
+  }
+}
+
+/* Very narrow phones: "All 16 | Day 1 | Day 2" */
+@media (max-width: 560px) {
+  .section-agenda .agenda-tablist .agenda-tab .tab-label-long {
+    display: none;
   }
 }
