@@ -2737,3 +2737,172 @@ button, input, select, textarea {
     padding: 18px 14px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Conclave Dining Menu Section (#menu)
+   -------------------------------------------------------------------------- */
+.section-menu {
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.menu-tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.menu-tablist {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+}
+
+.menu-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--color-text-body);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.menu-tab:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+
+.menu-tab.active {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  box-shadow: 0 2px 8px rgba(10, 54, 34, 0.2);
+}
+
+.menu-day-panel[hidden] {
+  display: none;
+}
+
+.menu-meals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.menu-meal-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.menu-meal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.menu-meal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--color-gold-border);
+}
+
+.menu-meal-kicker {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold-hover);
+  margin-bottom: 4px;
+}
+
+.menu-meal-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.menu-meal-time {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-subtle);
+  border: 1px solid var(--color-primary-border);
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.menu-items-list {
+  list-style: none;
+  counter-reset: menu-item;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-items-list li {
+  counter-increment: menu-item;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--color-text-body);
+  line-height: 1.45;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-page);
+}
+
+.menu-items-list li::before {
+  content: counter(menu-item, decimal-leading-zero);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--color-gold-hover);
+  min-width: 20px;
+}
+
+@media (max-width: 960px) {
+  .menu-meals-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-tablist {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .menu-tab {
+    flex: 1;
+    padding: 9px 12px;
+    font-size: 0.82rem;
+  }
+
+  .menu-meal-card {
+    padding: 18px;
+  }
+}

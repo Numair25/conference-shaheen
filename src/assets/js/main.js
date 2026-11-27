@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDayGroups();
   initCompactTabs();
   initAgendaTabs();
+  initMenuTabs();
   initFormHandler();
   initVenueGallery();
 });
@@ -294,6 +295,37 @@ function initVenueGallery() {
           mainImg.style.opacity = '1';
         }, 150);
       }
+    });
+  });
+}
+
+/**
+ * 7. Conclave Dining Menu Day Switcher
+ */
+function initMenuTabs() {
+  const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-day-panel');
+  if (!tabs.length || !panels.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetDay = tab.getAttribute('data-menu-day');
+
+      tabs.forEach(t => {
+        const isActive = t === tab;
+        t.classList.toggle('active', isActive);
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      panels.forEach(panel => {
+        const match = panel.getAttribute('data-menu-panel') === targetDay;
+        panel.classList.toggle('active', match);
+        if (match) {
+          panel.removeAttribute('hidden');
+        } else {
+          panel.setAttribute('hidden', '');
+        }
+      });
     });
   });
 }
