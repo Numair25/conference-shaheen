@@ -2748,9 +2748,13 @@ button, input, select, textarea {
 }
 
 .menu-tabs-wrapper {
+  position: sticky;
+  top: calc(var(--header-height) + var(--subnav-height) + 10px);
+  z-index: 750;
   display: flex;
   justify-content: center;
-  margin-bottom: 32px;
+  padding: 6px 0;
+  margin-bottom: 26px;
 }
 
 .menu-tablist {
