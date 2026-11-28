@@ -67,17 +67,69 @@
             <span class="pill-val">1st &amp; 2nd Dec 2026</span>
           </div>
           <a href="/docs/conclave-menu.pdf" target="_blank" rel="noopener" class="btn-header-secondary">
-            <span class="btn-prev-long">Food Menu (PDF)</span>
-            <span class="btn-prev-short">Menu</span>
+            Food Menu (PDF)
           </a>
-          <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="btn-header-secondary">
-            <span class="btn-prev-long">Previous Conference</span>
-            <span class="btn-prev-short">Previous</span>
-          </a>
+          <div class="header-dropdown">
+            <button type="button" class="btn-header-secondary header-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              <span>Previous Conference</span>
+              <svg class="dropdown-chevron" viewBox="0 0 20 20" fill="currentColor" width="15" height="15" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div class="header-dropdown-menu" hidden>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="header-dropdown-item">All India Educator's Summit 2022</a>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="header-dropdown-item">National Conference 2022 Jamia Hamdard</a>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="header-dropdown-item">All India Education Summit 2021</a>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="header-dropdown-item">International Education Summit 2019</a>
+              <div class="header-dropdown-divider"></div>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="header-dropdown-item header-dropdown-all">View All Previous Conferences &#8599;</a>
+            </div>
+          </div>
           <a href="/speakers/" class="btn-header-cta">
-            <span class="header-cta-long">Conclave Speakers</span>
-            <span class="header-cta-short">Speakers</span>
+            Conclave Speakers
           </a>
+        </div>
+
+        <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Drawer (Full Tab Names) -->
+      <div class="mobile-nav-drawer" id="mobile-nav-drawer" hidden>
+        <div class="mobile-nav-inner">
+          <a href="/docs/conclave-menu.pdf" target="_blank" rel="noopener" class="mobile-nav-link">
+            <span>Food Menu (PDF)</span>
+            <span class="mobile-nav-arrow">&#8599;</span>
+          </a>
+
+          <div class="mobile-dropdown">
+            <button type="button" class="mobile-nav-link mobile-dropdown-toggle" aria-expanded="false">
+              <span>Previous Conference</span>
+              <svg class="dropdown-chevron" viewBox="0 0 20 20" fill="currentColor" width="18" height="18" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div class="mobile-dropdown-list" hidden>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="mobile-dropdown-item">All India Educator's Summit 2022</a>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="mobile-dropdown-item">National Conference 2022 Jamia Hamdard</a>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="mobile-dropdown-item">All India Education Summit 2021</a>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="mobile-dropdown-item">International Education Summit 2019</a>
+              <a href="https://shaheengroup.org/conferences/" target="_blank" rel="noopener" class="mobile-dropdown-item mobile-dropdown-all">View All Previous Conferences &#8599;</a>
+            </div>
+          </div>
+
+          <a href="/speakers/" class="mobile-nav-link mobile-nav-cta">
+            <span>Conclave Speakers</span>
+            <span class="mobile-nav-arrow">&rarr;</span>
+          </a>
+
+          <div class="mobile-nav-dates">
+            <span class="pill-dot"></span>
+            <span>Conclave Dates: <strong>1st &amp; 2nd Dec 2026</strong></span>
+          </div>
         </div>
       </div>
     </header>
