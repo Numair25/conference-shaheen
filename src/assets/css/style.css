@@ -2910,3 +2910,101 @@ button, input, select, textarea {
     padding: 18px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Previous Conferences Section (#previous-conferences)
+   -------------------------------------------------------------------------- */
+.section-prev-conferences {
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.prev-conferences-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.prev-conf-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.prev-conf-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-gold-border);
+}
+
+.prev-conf-thumb {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-primary-subtle);
+}
+
+.prev-conf-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-base);
+}
+
+.prev-conf-card:hover .prev-conf-thumb img {
+  transform: scale(1.03);
+}
+
+.prev-conf-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prev-conf-year {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-gold-light);
+  color: var(--color-gold-hover);
+  border: 1px solid var(--color-gold-border);
+}
+
+.prev-conf-title {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.35;
+}
+
+.prev-conferences-footer {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .prev-conferences-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .prev-conferences-grid {
+    grid-template-columns: 1fr;
+  }
+}
